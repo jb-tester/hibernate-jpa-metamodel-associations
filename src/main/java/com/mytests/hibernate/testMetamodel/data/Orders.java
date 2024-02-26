@@ -10,7 +10,7 @@ import java.util.List;
 public class Orders {
     @Id
     @Column(name = "order_id")
-    private Integer orderId;
+    private int orderId;
 
     @OneToMany(mappedBy = "orders")
     private List<OrderItems> orderItems;
@@ -21,16 +21,15 @@ public class Orders {
 
     @Basic
     @Column(name = "urgent")
-    private Boolean urgent;
-    
-    public Integer getOrderId() {
+    private boolean urgent;
+
+    public int getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(Integer orderId) {
+    public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
-
 
     public List<OrderItems> getOrderItems() {
         return orderItems;
@@ -48,11 +47,11 @@ public class Orders {
         this.customers = customersByCustomerId;
     }
 
-    public Boolean getUrgent() {
+    public boolean isUrgent() {
         return urgent;
     }
 
-    public void setUrgent(Boolean urgent) {
+    public void setUrgent(boolean urgent) {
         this.urgent = urgent;
     }
 

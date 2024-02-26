@@ -44,12 +44,28 @@ public class RunMe {
                 out.println(d);
             }
         });
-        out.println("============ find orders by cistomer name: ");
+        out.println("============ find orders by customer name: ");
         for (Orders o : findOrders1("anna")) {
+            out.println(o);
+        }
+     out.println("============ find orders by id: ");
+        for (Orders o : findOrders2(1)) {
+            out.println(o);
+        }
+     out.println("============ find orders by urgency: ");
+        for (Orders o : findOrders3(true)) {
             out.println(o);
         }
         out.println("============ find items by category:");
         for (Items item : findItems1("fruits")) {
+            out.println(item);
+        }
+        out.println("============ find items by price:");
+        for (Items item : findItems2(5)) {
+            out.println(item);
+        }
+        out.println("============ find items by price primitive type:");
+        for (Items item : findItems3(5)) {
             out.println(item);
         }
         out.println("============ find order items by customer name:");
@@ -90,10 +106,30 @@ static List<Orders> findOrders1(String name) {
             OrdersRepository_.getOrdersByCustomerName(session, name));
     return orders.isEmpty() ? new ArrayList<>() : orders;
 }
+static List<Orders> findOrders2(int id) {
+    var orders = factory.fromTransaction(session ->
+            OrdersRepository_.getOrdersById(session, id));
+    return orders.isEmpty() ? new ArrayList<>() : orders;
+}
+static List<Orders> findOrders3(boolean urgent) {
+    var orders = factory.fromTransaction(session ->
+            OrdersRepository_.getOrdersByVip(session, urgent));
+    return orders.isEmpty() ? new ArrayList<>() : orders;
+}
 
 static List<Items> findItems1(String category) {
     var items = factory.fromTransaction(session ->
             ItemsRepository_.findItemByCategory(session, category));
+    return items.isEmpty() ? new ArrayList<>() : items;
+}
+static List<Items> findItems2(Integer price) {
+    var items = factory.fromTransaction(session ->
+            ItemsRepository_.findItemByPrice(session, price));
+    return items.isEmpty() ? new ArrayList<>() : items;
+}
+static List<Items> findItems3(int price) {
+    var items = factory.fromTransaction(session ->
+            ItemsRepository_.findItemByPricePrimitiveType(session, price));
     return items.isEmpty() ? new ArrayList<>() : items;
 }
 

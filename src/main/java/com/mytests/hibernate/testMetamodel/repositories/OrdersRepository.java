@@ -17,4 +17,15 @@ public interface OrdersRepository {
     List<Orders> getOrdersByCustomerName(String customers$customerName);
 
 
+    @Find
+   // List<Orders> getOrdersById(Integer orderId); // Integer instead of int: error should be reported
+    List<Orders> getOrdersById(int orderId);
+
+
+    @Find
+    //List<Orders> getOrdersByVip(Boolean urgent); // Boolean instead of boolean: error should be reported
+    List<Orders> getOrdersByVip(boolean urgent);
+
+
 }
+

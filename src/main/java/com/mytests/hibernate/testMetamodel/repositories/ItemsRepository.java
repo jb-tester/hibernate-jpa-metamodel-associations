@@ -15,4 +15,12 @@ public interface ItemsRepository {
 
     @Find
     List<Items> findItemByCategory(String category);
+
+    @Find
+    List<Items> findItemByPrice(Integer price); // Integer instead of int: error should be reported
+
+    @Find
+    List<Items> findItemByPricePrimitiveType(int price); // int instead of Integer: no problems
+
+
 }
