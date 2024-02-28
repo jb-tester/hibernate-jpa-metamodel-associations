@@ -8,6 +8,7 @@ import org.hibernate.annotations.processing.Find;
 import org.hibernate.query.Order;
 import org.hibernate.query.Page;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
@@ -48,8 +49,8 @@ public interface CustomerRepository {
    // Customer findByOrdersSet(Set<Orders> orders);
 
     // incorrect, List<Orders> parameter is expected
-    // @Find
-   // Customer findByOrdersCollection(Set<Orders> orders);
+    //@Find
+   //Customer findByOrdersCollection(Collection<Orders> orders);
 
     // incorrect, List<Orders> parameter is expected
     // @Find
